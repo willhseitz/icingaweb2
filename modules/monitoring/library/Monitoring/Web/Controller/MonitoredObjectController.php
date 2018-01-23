@@ -84,8 +84,9 @@ abstract class MonitoredObjectController extends Controller
         $this->view->extensionsHtml = array();
         foreach (Hook::all('Monitoring\DetailviewExtension') as $hook) {
             /** @var DetailviewExtensionHook $hook */
+            $module = $this->view->escape($hook->getModule()->getName());
             $this->view->extensionsHtml[] =
-                '<div class="icinga-module module-' . $this->view->escape($hook->getModule()->getName()) . '">'
+                '<div class="icinga-module module-' . $module . '" data-icinga-module="' . $module . '">'
                 . $hook->setView($this->view)->getHtmlForObject($this->object)
                 . '</div>';
         }
