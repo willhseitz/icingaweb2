@@ -4,6 +4,12 @@
     <div class="sort-controls-container">
         <?= $this->sortBox ?>
     </div>
+    <div style="clear: right; float: right">
+        <?= $this->qlink(
+            $this->translate('Show the hostgroup list'),
+            'monitoring/list/hostgroups'
+        ) ?>
+    </div>
     <?= $this->filterEditor ?>
 </div>
 <?php endif ?>
