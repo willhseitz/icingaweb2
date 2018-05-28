@@ -42,6 +42,50 @@
 }
 
 // Hostgroup- and servicegroup-grid styles
+
+.toggle {
+  display: inline-block;
+  position: absolute;
+  top: 3.5em;
+  right: 2.25em;
+}
+
+.toggle-label {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.toggle-outer {
+  width: 2.75em;
+  height: 1.4em;
+  display: inline-block;
+  margin-left: 0.2em;
+  vertical-align: bottom;
+}
+
+.toggle-inner {
+  width: 1em;
+  height: 1em;
+  background-color: @text-color-inverted;
+  margin: 0.2em;
+}
+
+.toggle-on {
+  background-color: @icinga-blue;
+
+  > .toggle-inner {
+    float: right;
+  }
+}
+
+.toggle-off {
+  background-color: @gray-light;
+
+  > .toggle-inner {
+    float: left;
+  }
+}
+
 .group-grid {
   display: grid;
   grid-gap: 1em 3em;

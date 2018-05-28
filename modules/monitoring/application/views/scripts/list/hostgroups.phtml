@@ -9,13 +9,15 @@ if (! $this->compact): ?>
         <?= $this->limiter ?>
         <?= $this->sortBox ?>
     </div>
-    <div style="clear: right; float: right">
-        <?= $this->qlink(
-            $this->translate('Show the hostgroup grid'),
-            'monitoring/list/hostgroup-grid'
-        ) ?>
-    </div>
     <?= $this->filterEditor ?>
+    <div class="toggle">
+        <a href="<?= $this->href('monitoring/list/hostgroup-grid') ?>" class="toggle-label">
+            <?= $this->translate('Grid view') ?>
+        <span class="toggle-outer toggle-off">
+            <span class="toggle-inner"></span>
+        </span>
+        </a>
+    </div>
 </div>
 <?php endif ?>
 

@@ -4,13 +4,15 @@
     <div class="sort-controls-container">
         <?= $this->sortBox ?>
     </div>
-    <div style="clear: right; float: right">
-        <?= $this->qlink(
-            $this->translate('Show the hostgroup list'),
-            'monitoring/list/hostgroups'
-        ) ?>
-    </div>
     <?= $this->filterEditor ?>
+    <div class="toggle">
+        <a href="<?= $this->href('monitoring/list/hostgroups') ?>" class="toggle-label">
+            <?= $this->translate('Grid view') ?>
+            <span class="toggle-outer toggle-on">
+            <span class="toggle-inner"></span>
+        </span>
+        </a>
+    </div>
 </div>
 <?php endif ?>
 <div class="content" data-base-target="_next">
