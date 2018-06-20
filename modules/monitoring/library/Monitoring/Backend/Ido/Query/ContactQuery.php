@@ -23,6 +23,11 @@ class ContactQuery extends IdoQuery
      */
     protected $groupOrigin = array('contactgroups', 'hosts', 'services');
 
+    protected $subQueryTargets = array(
+        'hostgroups'    => 'hostgroup',
+        'servicegroups' => 'servicegroup'
+    );
+
     /**
      * {@inheritdoc}
      */
@@ -231,5 +236,24 @@ class ContactQuery extends IdoQuery
             'st.timeperiod_object_id = c.service_timeperiod_object_id',
             array()
         );
+    }
+
+    protected function joinSubQuery(IdoQuery $query, $name)
+    {
+        if ($name === 'hostgroup') {
+            $this->requireVirtualTable('hosts');
+
+            $query->joinVirtualTable('members');
+
+            return ['hgm.host_object_id', 'ho.object_id'];
+        } elseif ($name === 'servicegroup') {
+            $this->requireVirtualTable('services');
+
+            $query->joinVirtualTable('members');
+
+            return ['sgm.service_object_id', 'so.object_id'];
+        }
+
+        return parent::joinSubQuery($query, $name);
     }
 }
