@@ -98,7 +98,7 @@ class Request extends Zend_Controller_Request_Http
      */
     public function isApiRequest()
     {
-        return $this->getHeader('Accept') === 'application/json';
+        return $this->extractMediaType($this->getHeader('Accept')) === 'application/json';
     }
 
     /**
